@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+<!-- Editor -->
+<div id="editor"></div>
+
+<!-- Scripts -->
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                ['bold', 'italic', 'underline'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ]
+        }
+    });
+
+    quill.root.innerHTML = '<p><strong>Hello, World!</strong></p>';
+    const htmlContent = quill.root.innerHTML;
+    console.log(htmlContent);
+
+</script>
+
+</body>
+</html>
