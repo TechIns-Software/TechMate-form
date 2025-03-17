@@ -6,7 +6,7 @@ navbar('Δημιουργία Ενότητας');
 ?>
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-lg-4">
             <h3 class="mb-4 text-center">Δημιουργία Ενότητας</h3>
             <div class="main-panel p-4">
                 <form class="mb-0">
