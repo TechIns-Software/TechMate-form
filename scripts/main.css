@@ -48,6 +48,7 @@ html {
   font-family: "Inter" serif;
   color: rgb(234, 237, 255);
 }
+
 body {
   background: url("../images/hero.png") no-repeat right;
   background-size: contain;
@@ -64,6 +65,7 @@ body {
   /* z-index: 0; */
   overflow: hidden;
 }
+
 .main-panel ul {
   margin-bottom: 0;
 }
@@ -90,6 +92,10 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
+}
+.tech-mate-form-control {
+  background-color: #091935;
+  border: 2px solid #334679;
 }
 
 .btn-type-list {
@@ -258,4 +264,57 @@ body {
 .custom-button:hover .glow-after::after {
   left: 60%;
   opacity: 0.4;
+}
+
+/* quill.js */
+/* Quill editor container */
+#editor {
+  background-color: #091935;
+  color: #ffffff;
+  height: 300px;
+  border: 1px solid #334679;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Toolbar dark mode */
+.ql-toolbar {
+  background-color: #334679;
+  border: 1px solid #334679 !important;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Toolbar buttons */
+.ql-toolbar button {
+  color: #ffffff !important;
+}
+
+/* Toolbar dropdowns */
+.ql-toolbar .ql-picker-label {
+  color: #ffffff !important;
+}
+
+/* Toolbar dropdown options */
+.ql-toolbar .ql-picker-options {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #334679 !important;
+}
+
+/* Toolbar icons */
+.ql-toolbar .ql-stroke {
+  stroke: #ffffff !important;
+}
+
+.ql-toolbar .ql-fill {
+  fill: #ffffff !important;
+}
+
+/* Editor content */
+.ql-editor {
+  color: #ffffff;
+}
+
+/* Placeholder text */
+.ql-editor.ql-blank::before {
+  color: #888888;
 }
