@@ -30,15 +30,8 @@ navbar('Δημιουργία Ερώτησης');
                             <label for="contentDescription" class="form-label">Απάντηση</label>
                             <div id="editor" class="quill-dark"></div>
                         </div>
-                        <!-- <button id="btnSub" type="submit" class="btn btn-primary w-100">Δημιουργία</button> -->
                         <button id="btnSub" type="submit" class="custom-button g5 shadow-500">
                             <span class="button-inner g4">
-                                <span class="button-icon">
-                                    <svg width="8" height="22" viewBox="0 0 8 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 0H0.5V4V18V22H2.5V16.25L7.63991 11.7526C8.09524 11.3542 8.09524 10.6458 7.63991 10.2474L2.5 5.75V0Z" fill="#2EF2FF"></path>
-                                    </svg>
-                                </span>
-                                <!-- <img src="images/zap.svg" alt="circle" class="button-image"> -->
                                 <span class="button-text">Δημιουργία</span>
                             </span>
                             <span class="glow-before glow-after"></span>
@@ -71,7 +64,7 @@ navbar('Δημιουργία Ερώτησης');
         const doc = parser.parseFromString(htmlContent, 'text/html');
         const cleanText = doc.body.textContent;
         if (question === '' || cleanText === '') {
-            alert('Η απάντηση ή η ερώτηση δεν μπορεί να είναι κενή');
+            SwalHelper.showAlert("error", "Error", "Η απάντηση ή η ερώτηση δεν μπορεί να είναι κενή");
             return;
         }
         const data = {
@@ -82,11 +75,14 @@ navbar('Δημιουργία Ερώτησης');
         };
         const callBack = (ans) => {
             if (ans.success === 1) {
-                alert('Η ερώτηση δημιουργήθηκε');
-                document.getElementById('contentTitle').value = '';
-                window.location.reload();
+
+                SwalHelper.showAlert("success", "Success", "Η ενότητα δημιουργήθηκε", () => {
+                    document.getElementById('contentTitle').value = '';
+                    window.location.reload();
+                });
+
             } else {
-                alert('Υπήρξε πρόβλημα κατά την δημιουργία της ερώτησης');
+                SwalHelper.showAlert("error", "Error", "Υπήρξε πρόβλημα κατά την δημιουργία της ερώτησης");
             }
             console.log(ans);
         };

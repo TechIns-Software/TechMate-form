@@ -16,12 +16,6 @@ $subjects = \TechMateForm\Subject::getSubjects($conn);
         <div class="col-auto">
             <a href="createSubject.php" class="custom-button g5 shadow-500">
                 <span class="button-inner g4">
-                    <span class="button-icon">
-                        <svg width="8" height="22" viewBox="0 0 8 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 0H0.5V4V18V22H2.5V16.25L7.63991 11.7526C8.09524 11.3542 8.09524 10.6458 7.63991 10.2474L2.5 5.75V0Z" fill="#2EF2FF"></path>
-                        </svg>
-                    </span>
-                    <!-- <img src="images/zap.svg" alt="circle" class="button-image"> -->
                     <span class="button-text">Δημιουργία Ενότητας</span>
                 </span>
                 <span class="glow-before glow-after"></span>

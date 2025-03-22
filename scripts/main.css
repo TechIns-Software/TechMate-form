@@ -448,10 +448,7 @@ body {
   transition-timing-function: ease-in-out;
 }
 
-.faq-slidedown p {
-  font-size: 16px;
-  line-height: 28px;
-  letter-spacing: 0.02em;
+.faq-slidedown .faq-content-wrapper {
   padding-top: 0.875rem;
   padding-bottom: 0.875rem;
   padding-left: 1.75rem;
@@ -503,31 +500,3 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
-
-/* .faq-icon {
-}
-.faq-icon:after {
-  position: absolute;
-  height: 0.125rem;
-  width: 0.75rem;
-  --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  --tw-bg-opacity: 1;
-  background-color: rgb(200 234 128 / var(--tw-bg-opacity, 1));
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.5s;
-  --tw-content: "";
-  content: var(--tw-content);
-}
-.faq-icon:before {
-  position: absolute;
-  height: 0.125rem;
-  width: 0.75rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(200 234 128 / var(--tw-bg-opacity, 1));
-  --tw-content: "";
-  content: var(--tw-content);
-} */

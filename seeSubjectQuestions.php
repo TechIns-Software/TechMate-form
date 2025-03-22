@@ -23,7 +23,7 @@ navbar('Προβολή Ερωτήσεων');
 <div class="faq-top-wrapper">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
+            <div class="col-xl-6">
                 <h1 class="text-center faq-top-heading">νότητα: <?= $subject['subjectName'] ?></h1>
                 <?php
                 foreach ($questions as $question) {
@@ -42,7 +42,7 @@ navbar('Προβολή Ερωτήσεων');
                             </div>
                         </div>
                         <div class="faq-slidedown">
-                            <p><?= $question['answer'] ?></p>
+                            <div class="faq-content-wrapper"><?= $question['answer'] ?></div>
                         </div>
                         <div class="faq-bg g5">
                             <div class="faq-bg-inside-1 g4"></div>
@@ -50,9 +50,7 @@ navbar('Προβολή Ερωτήσεων');
                         </div>
                     </div>
 
-                <?php
-                }
-                ?>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -64,7 +62,7 @@ navbar('Προβολή Ερωτήσεων');
 
 <!-- <div class="container my-5">
     <h3 class="mb-4 text-center">Ερωτήσεις</h3>
-    <h4 class="mb-4 text-center">Ενότητα: <?= $subject['subjectName'] ?></h4>
+    <h4 class="mb-4 text-center">Ενότητα: </h4>
     <div class="card shadow">
         <div class="card-body">
             <table class="table">
