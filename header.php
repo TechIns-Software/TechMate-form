@@ -120,13 +120,13 @@ function navbar($title)
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <a href="login.php" class="custom-button g5 shadow-500">
+                    <!-- <a href="login.php" class="custom-button g5 shadow-500">
                         <span class="button-inner g4">
                             <img src="images/zap.svg" alt="circle" class="button-image">
                             <span class="button-text">Login</span>
                         </span>
                         <span class="glow-before glow-after"></span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </nav>
