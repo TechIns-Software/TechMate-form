@@ -21,6 +21,20 @@ class Question
         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
     }
 
+    public static function getQuestionById($conn, $questionId)
+    {
+        $sql = "SELECT * FROM Question WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            return ["error" => "Database error: " . $conn->error];
+        }
+
+        $stmt->bind_param('i', $questionId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_assoc() : [];
+    }
     /**
      * Get questions by idSubject.
      */
@@ -59,4 +73,18 @@ class Question
             return 0;
         }
     }
+
+    public static function editQuestion($conn, $questionId, $questionName, $answer)
+    {
+        $sql = "UPDATE Question SET questionName = ?, answer = ? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            return ["error" => "Database error: " . $conn->error];
+        }
+
+        $stmt->bind_param('ssi', $questionName, $answer, $questionId);
+        return $stmt->execute() && $stmt->affected_rows > 0;
+    }
+
 }

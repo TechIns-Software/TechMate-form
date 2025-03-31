@@ -11,7 +11,7 @@ $subjects = \TechMateForm\Subject::getSubjects($conn);
 <div class="container top-header mt-4">
     <div class="row justify-content-between align-items-center">
         <div class="col-auto">
-            <h3 class="mb-3">Εννοιολογικές Ενότητες</h3>
+            <h3 class="mb-3">ΕΝΝΟΙΟΛΟΓΙΚΕΣ ΕΝΟΤΗΤΕΣ</h3>
         </div>
         <div class="col-auto">
             <a href="createSubject.php" class="custom-button g5 shadow-500">

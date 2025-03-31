@@ -24,7 +24,7 @@ navbar('Προβολή Ερωτήσεων');
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6">
-                <h1 class="text-center faq-top-heading">νότητα: <?= $subject['subjectName'] ?></h1>
+                <h1 class="text-center faq-top-heading">Ενότητα: <?= $subject['subjectName'] ?></h1>
                 <?php
                 foreach ($questions as $question) {
                 ?>
@@ -37,6 +37,7 @@ navbar('Προβολή Ερωτήσεων');
                                     <div class="faq-heading"><?= $question['questionName'] ?></div>
                                 </div>
                             </div>
+                            <a href="edit.php?id=<?=$question['id']?>">Edit</a>
                             <div class="faq-icon">
                                 <div class="g4 faq-icon-inner"></div>
                             </div>

@@ -57,6 +57,28 @@ if ($actionName == 'createSubject') {
         'success' => 1,
         'idQuestion' => $idQuestion
     ));
+} else if ($actionName == "editQuestion") {
+    if (!isset(
+        $_POST['questionId'],
+        $_POST['questionName'],
+        $_POST['answer'],
+    )) {
+        $defaultErrorAnswer['message'] = ERROR_NO_GOOD_ARGUMENTS;
+        sendRestApiAnswer($defaultErrorAnswer);
+    }
+    $questionId = $_POST['questionId'];
+    $questionName = $_POST['questionName'];
+    $answer = $_POST['answer'];
+
+    $isUpdated = \TechMateForm\Question::editQuestion($conn, $questionId, $questionName, $answer);
+    if (!$isUpdated) {
+        $defaultErrorAnswer['message'] = 'Error updating question';
+        sendRestApiAnswer($defaultErrorAnswer);
+    }
+    sendRestApiAnswer(array(
+        'success' => 1,
+        'idQuestion' => $questionId
+    ));
 }
 
 
