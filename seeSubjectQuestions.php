@@ -38,6 +38,7 @@ navbar('Προβολή Ερωτήσεων');
                                 </div>
                             </div>
                             <a href="edit.php?id=<?=$question['id']?>">Edit</a>
+                            <a href="relateQuestions.php?id=<?=$question['id']?>">Relate</a>
                             <div class="faq-icon">
                                 <div class="g4 faq-icon-inner"></div>
                             </div>

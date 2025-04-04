@@ -14,3 +14,14 @@ CREATE TABLE `Question`
     FOREIGN KEY (`idSubject`) REFERENCES `Subject` (`id`)
         ON DELETE CASCADE
 ) ENGINE = InnoDB;
+CREATE TABLE `QuestionChildren`
+(
+    `id`             int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (`id`),
+    `parentQuestion` int NOT NULL,
+    `childQuestion`  int NOT NULL,
+    FOREIGN KEY (`parentQuestion`) REFERENCES `Question` (`id`)
+        ON DELETE CASCADE,
+    FOREIGN KEY (`childQuestion`) REFERENCES `Question` (`id`)
+        ON DELETE CASCADE
+) ENGINE = InnoDB;

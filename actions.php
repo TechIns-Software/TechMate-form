@@ -79,6 +79,37 @@ if ($actionName == 'createSubject') {
         'success' => 1,
         'idQuestion' => $questionId
     ));
+} else if ($actionName == "relateQuestion") {
+    if (!isset(
+        $_POST['parentId'],
+        $_POST['childId'],
+    )) {
+        $defaultErrorAnswer['message'] = ERROR_NO_GOOD_ARGUMENTS;
+        sendRestApiAnswer($defaultErrorAnswer);
+    }
+    $parentId = $_POST['parentId'];
+    $childId = $_POST['childId'];
+
+    $isRelated = \TechMateForm\QuestionChildren::checkIfRelationshipExists($conn, $parentId, $childId);
+    if ($isRelated) {
+        $isDeleted = \TechMateForm\QuestionChildren::deleteRelationship($conn, $parentId, $childId);
+        if (!$isDeleted) {
+            $defaultErrorAnswer['message'] = 'Αδυναμία διαγραφής σχέσης';
+            sendRestApiAnswer($defaultErrorAnswer);
+        }
+        $newStatus = false;
+    } else {
+        $isAdded = \TechMateForm\QuestionChildren::addRelationship($conn, $parentId, $childId);
+        if (!$isAdded) {
+            $defaultErrorAnswer['message'] = 'Αδυναμία προσθήκης σχέσης';
+            sendRestApiAnswer($defaultErrorAnswer);
+        }
+        $newStatus = true;
+    }
+    sendRestApiAnswer(array(
+        'success' => 1,
+        'related' => $newStatus
+    ));
 }
 
 
