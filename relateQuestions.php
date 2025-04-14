@@ -26,8 +26,8 @@ navbar('Relate Ερώτησης');
                         <div class="mb-3">
                             <label for="contentTitle" class="form-label">Question</label>
                             <input type="text" value="<?= $question['questionName'] ?>"
-                                   class="form-control tech-mate-form-control" id="contentTitle" placeholder="Ερώτηση"
-                                   required>
+                                class="form-control tech-mate-form-control" id="contentTitle" placeholder="Ερώτηση"
+                                required>
                         </div>
                     </form>
                 </div>
@@ -36,71 +36,78 @@ navbar('Relate Ερώτησης');
     </div>
     <br>
     <div class="row justify-content-center align-items-center">
-        <table class="table table-striped table-hover">
+        <table class="table table-responsive rounded-3 overflow-hidden table-striped table-hover ">
             <thead class="text-center">
-            <tr>
-                <th scope="col">Ερώτηση</th>
-                <th scope="col">Αλλαγή Status</th>
-                <th scope="col">Status (= είναι επόμενη ερώτηση)</th>
-            </tr>
+                <tr>
+                    <th scope="col">Ερώτηση</th>
+                    <th scope="col">Αλλαγή Status</th>
+                    <th scope="col">Status (= είναι επόμενη ερώτηση)</th>
+                </tr>
             </thead>
             <tbody class="text-center">
-            <?php
-            foreach ($questions as $q) {
-                if ($q['id'] == $questionId) {
-                    continue;
-                }
-                $_questionName = $q['questionName'];
-                $_questionId = $q['id'];
-                ?>
-                <tr>
-                    <td><?= $_questionName ?></td>
-                    <td>
-                        <button class="btn btn-primary" onclick="relateQuestion(<?= $questionId ?>, <?= $_questionId ?>)">
-                            Αλλαγή
-                        </button>
-                    </td>
-                    <td>
-                        <span id="status-<?= $_questionId ?>">
-                            <?php
-                            if (in_array($_questionId, $relationships)) {
-                                echo '<span class="text-success">ΝΑΙ</span>';
-                            } else {
-                                echo '<span class="text-danger">ΟΧΙ</span>';
-                            }
-                            ?>
-                        </span>
-                    </td>
-                </tr>
                 <?php
-            }
+                foreach ($questions as $q) {
+                    if ($q['id'] == $questionId) {
+                        continue;
+                    }
+                    $_questionName = $q['questionName'];
+                    $_questionId = $q['id'];
+                ?>
+                    <tr>
+                        <td><?= $_questionName ?></td>
+                        <td class="text-center">
+                            <div class="form-check form-switch d-flex justify-content-center gap-4">
+                                <input
+                                    class="form-check-input "
+                                    type="checkbox"
+                                    id="switch-<?= $questionId ?>-<?= $_questionId ?>"
+                                    onclick="relateQuestion(<?= $questionId ?>, <?= $_questionId ?>)">
+                                <label class="form-check-label" for="switch-<?= $questionId ?>-<?= $_questionId ?>">Αλλαγή</label>
+                            </div>
 
-            ?>
+                        </td>
+                        <td>
+                            <span id="status-<?= $_questionId ?>">
+                                <?php
+                                if (in_array($_questionId, $relationships)) {
+                                    echo '<span class="badge rounded-pill bg-success">ΝΑΙ</span>';
+                                } else {
+                                    echo '<span class="badge rounded-pill bg-danger">ΟΧΙ</span>';
+                                }
+                                ?>
+                            </span>
+                        </td>
+                    </tr>
+                <?php
+                }
+
+                ?>
 
     </div>
+
 </div>
 <script>
-function relateQuestion(parentId, childId) {
-    const data = {
-        action: 'relateQuestion',
-        parentId: parentId,
-        childId: childId
-    };
-    const callback = (response) => {
-        if (response.success) {
-            const statusElement = document.getElementById('status-' + childId);
-            if (response.related) {
-                statusElement.innerHTML = '<span class="text-success">ΝΑΙ</span>';
+    function relateQuestion(parentId, childId) {
+        const data = {
+            action: 'relateQuestion',
+            parentId: parentId,
+            childId: childId
+        };
+        const callback = (response) => {
+            if (response.success) {
+                const statusElement = document.getElementById('status-' + childId);
+                if (response.related) {
+                    statusElement.innerHTML = '<span class="badge rounded-pill bg-success">ΝΑΙ</span>';
+                } else {
+                    statusElement.innerHTML = '<span class="badge rounded-pill bg-danger">ΟΧΙ</span>';
+                }
             } else {
-                statusElement.innerHTML = '<span class="text-danger">ΟΧΙ</span>';
+                alert(response.message);
             }
-        } else {
-            alert(response.message);
-        }
-    };
-    getAjax(data, callback);
+        };
+        getAjax(data, callback);
 
-}
+    }
 </script>
 
 <?php
