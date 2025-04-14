@@ -52,6 +52,7 @@ navbar('Relate Ερώτησης');
                     }
                     $_questionName = $q['questionName'];
                     $_questionId = $q['id'];
+                    $isChecked = in_array($_questionId, $relationships);
                 ?>
                     <tr>
                         <td><?= $_questionName ?></td>
@@ -61,15 +62,15 @@ navbar('Relate Ερώτησης');
                                     class="form-check-input "
                                     type="checkbox"
                                     id="switch-<?= $questionId ?>-<?= $_questionId ?>"
-                                    onclick="relateQuestion(<?= $questionId ?>, <?= $_questionId ?>)">
-                                <label class="form-check-label" for="switch-<?= $questionId ?>-<?= $_questionId ?>">Αλλαγή</label>
+                                    onclick="relateQuestion(<?= $questionId ?>, <?= $_questionId ?>)"
+                                    <?= $isChecked ? 'checked' : '' ?>>
                             </div>
 
                         </td>
                         <td>
                             <span id="status-<?= $_questionId ?>">
                                 <?php
-                                if (in_array($_questionId, $relationships)) {
+                                if ($isChecked) {
                                     echo '<span class="badge rounded-pill bg-success">ΝΑΙ</span>';
                                 } else {
                                     echo '<span class="badge rounded-pill bg-danger">ΟΧΙ</span>';
