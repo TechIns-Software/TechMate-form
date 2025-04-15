@@ -17,6 +17,40 @@ if (!isset($_POST['action'])) {
 $conn = TechMateForm\Connection::getConnection();
 
 $actionName = $_POST['action'];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($actionName == 'login') {
+    if (!isset(
+        $_POST['username'],
+        $_POST['password'],
+    )) {
+        $defaultErrorAnswer['message'] = ERROR_NO_GOOD_ARGUMENTS;
+        sendRestApiAnswer($defaultErrorAnswer);
+    }
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $userId = \TechMateForm\User::login($conn, $username, $password);
+    if ($userId < 1) {
+        $defaultErrorAnswer['message'] = 'Error logging in';
+        sendRestApiAnswer($defaultErrorAnswer);
+    }
+    $_SESSION['userId'] = $userId;
+    $_SESSION['date'] = time();
+    sendRestApiAnswer(array(
+        'success' => 1,
+        'userId' => $userId
+    ));
+}
+
+if (!isset($_SESSION['userId'], $_SESSION['date']) || (time() - $_SESSION['date'] > 60 * 30)) {
+    sendRestApiAnswer(array(
+        'success' => 0,
+        'message' => 'Παρακαλώ συνδεθείτε ξανά',
+    ));
+}
 
 if ($actionName == 'createSubject') {
     if (!isset(

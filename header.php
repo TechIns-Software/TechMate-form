@@ -1,9 +1,23 @@
 <?php
 date_default_timezone_set('Europe/Athens');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($noLogin) || !$noLogin) {
+    if (!isset($_SESSION['userId'], $_SESSION['date']) || (time() - $_SESSION['date'] > 60 * 30)) {
+        session_destroy();
+        session_start();
+        header('Location: login.php');
+        exit();
+    }
+    else {
+        $_SESSION['date'] = time();
+    }
+}
 
 function navbar($title)
 {
-    global $admin;
 ?>
     <html data-bs-theme="dark">
 

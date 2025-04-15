@@ -1,3 +1,10 @@
+CREATE TABLE `User`
+(
+    `id`          int          NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (`id`),
+    `username`    varchar(250) NOT NULL,
+    `password`    varchar(250) NOT NULL
+) ENGINE = InnoDB;
 CREATE TABLE `Subject`
 (
     `id`          int          NOT NULL AUTO_INCREMENT,

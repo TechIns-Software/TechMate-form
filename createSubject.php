@@ -62,3 +62,6 @@ navbar('Δημιουργία Ενότητας');
         getAjax(data, callBack);
     });
 </script>
+
+<?php
+require_once 'footer.php';

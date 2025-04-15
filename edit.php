@@ -89,3 +89,6 @@ navbar('Edit Ερώτησης');
         getAjax(data, callBack);
     });
 </script>
+
+<?php
+require_once 'footer.php';
